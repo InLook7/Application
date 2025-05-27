@@ -6,7 +6,7 @@ using DeskBooking.Application.Common.Dtos;
 using DeskBooking.Application.Common.Mappings;
 using Microsoft.Extensions.Logging;
 
-namespace DeskBooking.Application.Bookings.Commands;
+namespace DeskBooking.Application.Bookings.Commands.Create;
 
 public class CreateBookingHandler
     : IRequestHandler<CreateBookingCommand, Result<BookingDto>>

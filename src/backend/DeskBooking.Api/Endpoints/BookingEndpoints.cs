@@ -1,6 +1,6 @@
 using Mediator;
 using DeskBooking.Api.Requests;
-using DeskBooking.Application.Bookings.Commands;
+using DeskBooking.Application.Bookings.Commands.Create;
 using DeskBooking.Api.Responses;
 
 namespace DeskBooking.Api.Endpoints;

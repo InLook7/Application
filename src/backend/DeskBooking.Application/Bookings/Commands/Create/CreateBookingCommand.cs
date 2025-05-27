@@ -2,7 +2,7 @@ using Mediator;
 using FluentResults;
 using DeskBooking.Application.Common.Dtos;
 
-namespace DeskBooking.Application.Bookings.Commands;
+namespace DeskBooking.Application.Bookings.Commands.Create;
 
 public record CreateBookingCommand(
     string UserName,
