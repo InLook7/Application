@@ -7,12 +7,11 @@ public static class WorkspaceMappings
 {
     public static WorkspaceTypeDto ToWorkspaceTypeDto(this WorkspaceType workspaceType)
     {
-        return new WorkspaceTypeDto
-        {
-            Id = workspaceType.Id,
-            Name = workspaceType.Name,
-            Description = workspaceType.Description
-        };
+        return new WorkspaceTypeDto(
+            workspaceType.Id,
+            workspaceType.Name,
+            workspaceType.Description
+        );
     }
 
     public static IEnumerable<WorkspaceTypeDto> ToWorkspaceTypeDtos(this IEnumerable<WorkspaceType> workspaceTypes)

@@ -17,5 +17,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapWorkspaceTypeEndpoints();
+app.MapBookingEndpoints();
 
 app.Run();

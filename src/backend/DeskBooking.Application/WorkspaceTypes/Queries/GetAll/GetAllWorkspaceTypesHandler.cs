@@ -19,6 +19,7 @@ public class GetAllWorkspaceTypesHandler
     {
         var workspaceTypes = await _unitOfWork.WorkspaceTypeRepository.GetAllAsync();
 
-        return workspaceTypes.ToWorkspaceTypeDtos();
+        var workspaceTypeDtos = workspaceTypes.ToWorkspaceTypeDtos();
+        return workspaceTypeDtos;
     }
 }

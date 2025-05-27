@@ -17,6 +17,12 @@ public class UnitOfWork : IUnitOfWork
     public IWorkspaceTypeRepository WorkspaceTypeRepository
         => new WorkspaceTypeRepository(_dbContext);
 
+    public IWorkspaceRepository WorkspaceRepository
+        => new WorkspaceRepository(_dbContext);
+
+    public IBookingRepository BookingRepository
+        => new BookingRepository(_dbContext);
+
     public async Task SaveAsync()
     {
         await _dbContext.SaveChangesAsync();
