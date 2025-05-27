@@ -1,0 +1,6 @@
+using Mediator;
+using DeskBooking.Application.Common.Dtos;
+
+namespace DeskBooking.Application.WorkspaceTypes.Queries.GetAll;
+
+public record GetAllWorkspaceTypesQuery : IRequest<IEnumerable<WorkspaceTypeDto>>;

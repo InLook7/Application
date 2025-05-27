@@ -1,3 +1,5 @@
+using DeskBooking.Domain.Interfaces;
+using DeskBooking.Infrastructure.Persistence;
 using DeskBooking.Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +15,8 @@ public static class InfrastructureExtensions
     {
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DeskBookingDatabase")));
+
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         return services;
     }
