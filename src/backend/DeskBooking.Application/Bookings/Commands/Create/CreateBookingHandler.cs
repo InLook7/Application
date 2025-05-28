@@ -1,11 +1,11 @@
+using Microsoft.Extensions.Logging;
 using Mediator;
 using FluentResults;
-using DeskBooking.Domain.Interfaces;
-using DeskBooking.Domain.Entities;
 using DeskBooking.Application.Common.Dtos;
-using DeskBooking.Application.Common.Mappings;
-using Microsoft.Extensions.Logging;
 using DeskBooking.Application.Common.Errors;
+using DeskBooking.Application.Common.Mappings;
+using DeskBooking.Domain.Entities;
+using DeskBooking.Domain.Interfaces;
 
 namespace DeskBooking.Application.Bookings.Commands.Create;
 

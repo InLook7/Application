@@ -7,5 +7,4 @@ public record BookingDto(
     int WorkspaceId,
     DateTime StartTime,
     DateTime EndTime,
-    DateTime CreatedAt
-);
+    DateTime CreatedAt);
