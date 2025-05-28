@@ -4,5 +4,5 @@ namespace DeskBooking.Domain.Interfaces.Repositories;
 
 public interface IWorkspaceRepository
 {
-    Task<Workspace?> GetByIdAsync(int id);
+    Task<Workspace?> GetByIdAsync(int workspaceId);
 }

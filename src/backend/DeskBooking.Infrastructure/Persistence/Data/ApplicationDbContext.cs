@@ -1,6 +1,6 @@
-using DeskBooking.Domain.Entities;
-using DeskBooking.Infrastructure.Persistence.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
+using DeskBooking.Infrastructure.Persistence.Data.Configurations;
+using DeskBooking.Domain.Entities;
 
 namespace DeskBooking.Infrastructure.Persistence.Data;
 

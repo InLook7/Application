@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using DeskBooking.Infrastructure.Persistence.Data;
 using DeskBooking.Domain.Entities;
 using DeskBooking.Domain.Interfaces.Repositories;
-using DeskBooking.Infrastructure.Persistence.Data;
 
 namespace DeskBooking.Infrastructure.Persistence.Repositories;
 

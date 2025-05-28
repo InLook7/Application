@@ -1,9 +1,9 @@
-using DeskBooking.Domain.Interfaces;
-using DeskBooking.Infrastructure.Persistence;
-using DeskBooking.Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using DeskBooking.Infrastructure.Persistence;
+using DeskBooking.Infrastructure.Persistence.Data;
+using DeskBooking.Domain.Interfaces;
 
 namespace DeskBooking.Infrastructure.Extensions;
 

@@ -1,7 +1,7 @@
-using DeskBooking.Domain.Interfaces;
-using DeskBooking.Domain.Interfaces.Repositories;
 using DeskBooking.Infrastructure.Persistence.Data;
 using DeskBooking.Infrastructure.Persistence.Repositories;
+using DeskBooking.Domain.Interfaces;
+using DeskBooking.Domain.Interfaces.Repositories;
 
 namespace DeskBooking.Infrastructure.Persistence;
 

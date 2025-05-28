@@ -5,6 +5,7 @@ using DeskBooking.Domain.Entities;
 using DeskBooking.Application.Common.Dtos;
 using DeskBooking.Application.Common.Mappings;
 using Microsoft.Extensions.Logging;
+using DeskBooking.Application.Common.Errors;
 
 namespace DeskBooking.Application.Bookings.Commands.Create;
 
@@ -30,7 +31,7 @@ public class CreateBookingHandler
         if (workspace == null)
         {
             _logger.LogWarning("Workspace with ID {WorkspaceId} does not exist.", command.WorkspaceId);
-            return Result.Fail($"Workspace with ID {command.WorkspaceId} was not found.");
+            return Result.Fail(new ValidationError($"Workspace with ID {command.WorkspaceId} was not found."));
         }
 
         var booking = new Booking

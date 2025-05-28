@@ -7,15 +7,15 @@ public static class WorkspaceTypeEndpoints
 {
     public static void MapWorkspaceTypeEndpoints(this IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup("api/workspaceTypes");
+        var group = app.MapGroup("api/v1/workspaceTypes");
 
         group.MapGet("/", GetWorkspaceTypes);
     }
 
     private static async Task<IResult> GetWorkspaceTypes(IMediator mediator)
     {
-        var workspaceTypes = await mediator.Send(new GetAllWorkspaceTypesQuery());
+        var workspaceTypeDtos = await mediator.Send(new GetAllWorkspaceTypesQuery());
 
-        return TypedResults.Ok(workspaceTypes);
+        return TypedResults.Ok(workspaceTypeDtos);
     }
 }
