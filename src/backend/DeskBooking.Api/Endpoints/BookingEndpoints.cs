@@ -51,6 +51,8 @@ public static class BookingEndpoints
             request.UserName,
             request.UserEmail,
             request.WorkspaceId,
+            request.StartDate,
+            request.EndDate,
             request.StartTime,
             request.EndTime
         );
@@ -73,6 +75,8 @@ public static class BookingEndpoints
         var command = new PatchBookingCommand(
             id,
             request.WorkspaceId,
+            request.StartDate,
+            request.EndDate,
             request.StartTime,
             request.EndTime
         );

@@ -12,6 +12,8 @@ public static class BookingMappings
             booking.UserName,
             booking.UserEmail,
             booking.WorkspaceId,
+            booking.StartDate,
+            booking.EndDate,
             booking.StartTime,
             booking.EndTime,
             booking.CreatedAt

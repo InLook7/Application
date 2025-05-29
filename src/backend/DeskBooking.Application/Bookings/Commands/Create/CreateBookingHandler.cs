@@ -39,6 +39,8 @@ public class CreateBookingHandler
             UserName = command.UserName,
             UserEmail = command.UserEmail,
             WorkspaceId = command.WorkspaceId,
+            StartDate = command.StartDate,
+            EndDate = command.EndDate,
             StartTime = command.StartTime,
             EndTime = command.EndTime,
             CreatedAt = DateTime.UtcNow,

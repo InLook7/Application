@@ -43,12 +43,22 @@ public class PatchBookingHandler
             }
         }
 
-        if (command.StartTime is DateTime startTime)
+        if (command.StartDate is DateOnly startDate)
+        {
+            booking.StartDate = startDate;
+        }
+
+        if (command.EndDate is DateOnly endDate)
+        {
+            booking.EndDate = endDate;
+        }
+
+        if (command.StartTime is TimeOnly startTime)
         {
             booking.StartTime = startTime;
         }
 
-        if (command.EndTime is DateTime endTime)
+        if (command.EndTime is TimeOnly endTime)
         {
             booking.EndTime = endTime;
         }

@@ -2,5 +2,7 @@ namespace DeskBooking.Api.Requests;
 
 public record PatchBookingRequest(
     int? WorkspaceId,
-    DateTime? StartTime,
-    DateTime? EndTime);
+    DateOnly? StartDate,
+    DateOnly? EndDate,
+    TimeOnly? StartTime,
+    TimeOnly? EndTime);

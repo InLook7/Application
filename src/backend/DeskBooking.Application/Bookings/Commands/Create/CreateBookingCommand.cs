@@ -8,5 +8,7 @@ public record CreateBookingCommand(
     string UserName,
     string UserEmail,
     int WorkspaceId,
-    DateTime StartTime,
-    DateTime EndTime) : IRequest<Result<BookingDto>>;
+    DateOnly StartDate,
+    DateOnly EndDate,
+    TimeOnly StartTime,
+    TimeOnly EndTime) : IRequest<Result<BookingDto>>;

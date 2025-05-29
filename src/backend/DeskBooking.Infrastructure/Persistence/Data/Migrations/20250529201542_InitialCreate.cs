@@ -115,8 +115,10 @@ namespace DeskBooking.Infrastructure.Persistence.Data.Migrations
                     UserName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     UserEmail = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     WorkspaceId = table.Column<int>(type: "integer", nullable: false),
-                    StartTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    EndTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    StartDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    EndDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    StartTime = table.Column<TimeOnly>(type: "time without time zone", nullable: false),
+                    EndTime = table.Column<TimeOnly>(type: "time without time zone", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>

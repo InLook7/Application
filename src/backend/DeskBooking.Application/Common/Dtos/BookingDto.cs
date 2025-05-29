@@ -5,6 +5,8 @@ public record BookingDto(
     string UserName,
     string UserEmail,
     int WorkspaceId,
-    DateTime StartTime,
-    DateTime EndTime,
+    DateOnly StartDate,
+    DateOnly EndDate,
+    TimeOnly StartTime,
+    TimeOnly EndTime,
     DateTime CreatedAt);

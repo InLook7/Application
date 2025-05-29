@@ -7,5 +7,7 @@ namespace DeskBooking.Application.Bookings.Commands.Patch;
 public record PatchBookingCommand(
     int Id,
     int? WorkspaceId,
-    DateTime? StartTime,
-    DateTime? EndTime) : IRequest<Result<BookingDto>>;
+    DateOnly? StartDate,
+    DateOnly? EndDate,
+    TimeOnly? StartTime,
+    TimeOnly? EndTime) : IRequest<Result<BookingDto>>;

@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DeskBooking.Infrastructure.Persistence.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250526221357_InitialCreate")]
+    [Migration("20250529201542_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -61,11 +61,17 @@ namespace DeskBooking.Infrastructure.Persistence.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateOnly>("EndDate")
+                        .HasColumnType("date");
 
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<TimeOnly>("EndTime")
+                        .HasColumnType("time without time zone");
+
+                    b.Property<DateOnly>("StartDate")
+                        .HasColumnType("date");
+
+                    b.Property<TimeOnly>("StartTime")
+                        .HasColumnType("time without time zone");
 
                     b.Property<string>("UserEmail")
                         .IsRequired()
