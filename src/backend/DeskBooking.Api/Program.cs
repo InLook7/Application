@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using DeskBooking.Api.Endpoints;
 using DeskBooking.Api.Middleware;
@@ -13,7 +12,15 @@ builder.Services.AddInfrastructureLayer(builder.Configuration);
 
 builder.Services.AddOpenApi();
 
-builder.Services.AddCors();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", policy =>
+    {
+		policy.WithOrigins("http://localhost:4200")
+        	.AllowAnyHeader()
+        	.AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -30,11 +37,7 @@ app.MapBookingEndpoints();
 
 app.UseStaticFiles();
 
-app.UseCors(builder => builder
-	.AllowAnyOrigin()
-	.AllowAnyHeader()
-	.AllowAnyMethod()
-);
+app.UseCors("CorsPolicy");
 
 // Seeding
 using (var scope = app.Services.CreateScope())
