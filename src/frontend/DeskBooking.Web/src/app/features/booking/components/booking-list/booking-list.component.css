@@ -1,0 +1,140 @@
+.container {
+  max-width: 65rem;
+  margin: auto;
+  padding: 1.25rem;
+}
+
+.booking-card {
+  display: flex;
+  align-items: flex-start;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.25rem;
+  padding: 1rem;
+  position: relative;
+}
+
+.room-image {
+  width: 9rem;
+  height: 6.25rem;
+  object-fit: cover;
+  border-radius: 0.625rem;
+  margin-right: 1rem;
+}
+
+.details {
+  flex: 1;
+}
+
+.details h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.details .date-range,
+.details .booking-time {
+  font-weight: 500;
+}
+
+.details .icon {
+  border-radius: 0.625rem;
+  width: 1.812rem;
+  height: 1.812rem;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 0.375rem;
+}
+
+.details .note {
+  margin-left: 0.5rem;
+  color: #6b7280;
+  font-size: 0.9em;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.actions button {
+  width: 2.688rem;
+  height: 2.688rem;
+  padding: 0.063rem;
+  border-radius: 0.313rem;
+  background-color: transparent;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.1s ease, border 0.1s ease;
+}
+
+.actions button:hover {
+  background-color: #ddd5d5;
+}
+
+.actions button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.actions .edit {
+  border: 1px solid #9ca3af;
+}
+
+.actions .edit:hover {
+  border: 0.125rem solid #6b7280;
+}
+
+.actions .delete {
+  border: 1px solid #ef4444;
+}
+
+.actions .delete:hover {
+  border: 0.125rem solid #dc2626;
+}
+
+.container.no-bookings {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #ffffff;
+}
+
+.no-bookings-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.message-title {
+  font-size: 23px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.message-subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.btn {
+  flex: 1;
+  margin-top: 1rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  background-color: #5a4bff;
+  color: #ffffff 
+}
+
+.btn:hover {
+  background-color: #4f46e5;
+  color: #f9fafb;
+}

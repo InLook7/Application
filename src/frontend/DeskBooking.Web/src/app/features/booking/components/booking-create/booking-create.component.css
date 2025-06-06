@@ -1,0 +1,114 @@
+.container {
+  max-width: 65rem;
+  margin: auto;
+  padding: 1.25rem;
+}
+
+.form-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.reservation-details {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 55%;
+  gap: 0.3rem;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
+}
+
+label {
+  display: block;
+  margin-bottom: 0.125rem;
+  color: #303030;
+}
+
+.name,
+.email,
+select {
+  background-color: #fcfbff;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.875rem;
+  padding: 0.625rem;
+  border-radius: 0.5rem;
+  border: 1px solid #c2bcd8;
+  margin-bottom: 1.875rem;
+  outline-offset: 0.125rem;
+  outline-color: transparent;
+  transition: outline-color 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #5c5af3;
+}
+
+.room-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.room {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0.125rem 0.3125rem 0.3125rem 0.3125rem;
+  position: relative;
+  vertical-align: middle;
+  background-color: #fcfbff;
+  border: 0.125rem solid #c2bcd8;
+  border-radius: 50%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.room:checked {
+  background-color: #5c5af3;
+  border-color: #5c5af3;
+}
+
+.date-time {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 30%;
+  gap: 0.3rem;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
+}
+
+.date-select {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.625rem;
+  margin-top: 0.375rem;
+}
+
+.submit {
+  flex: 1;
+  margin-top: 1rem;
+  padding: 0.7rem 1.25rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  background-color: #5a4bff;
+  color: #ffffff 
+}
+
+.submit:not(:disabled):hover {
+  background-color: #4f46e5;
+  color: #f9fafb;
+}
+
+.submit:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

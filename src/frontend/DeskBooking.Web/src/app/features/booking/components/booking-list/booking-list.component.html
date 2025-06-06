@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>My bookings</h1>
+
+  <ng-container *ngIf="bookingListItems$ | async as bookings; else loading">
+    <ng-container *ngIf="bookings.length > 0; else noBookings">
+    <div class="booking-card" *ngFor="let booking of bookings">
+      <img class="room-image" [src]="getImageUrl(booking.photoFilePath)" />
+
+      <div class="details">
+        <h3>{{ booking.workspaceTypeName }} for {{ booking.workspaceCapacity }} {{ booking.workspaceCapacity === 1 ? 'person' : 'people' }}</h3>
+
+        <p>
+          <img class="icon" src="calendar.jpg" />
+          <span class="date-range">{{ booking.startDate | date:'MMMM d, yyyy' }} - {{ booking.endDate | date:'MMMM d, yyyy' }}</span>
+          <span class="note">{{ booking.startDate | dateRangeDuration: booking.endDate }}</span>
+        </p>
+
+        <p>
+          <img class="icon" src="clock.jpg" /> 
+          <span class="booking-time">from {{ booking.startTime | timeAmPm }} to {{ booking.endTime | timeAmPm }}</span>
+        </p>
+      </div>
+
+      <div class="actions">
+        <button class="edit" (click)="goToEdit(booking.id)">
+          <img src="edit.jpg" /> 
+        </button>
+        <button class="delete" (click)="goToCancelConfirmationModal(booking.id)">
+          <img src="delete.jpg" /> 
+        </button>
+      </div>
+    </div>
+    </ng-container>
+  </ng-container>
+
+<ng-template #loading>
+  <p>Loading bookings...</p>
+</ng-template>
+
+<ng-template #noBookings>
+  <div class="container no-bookings">
+    <div class="no-bookings-icon">🔍</div>
+    <div class="message-title">You don't have any bookings yet</div>
+    <div class="message-subtitle">Start by choosing a coworking space</div>
+
+    <button class="btn" (click)="goToWorkspaces()">Select a workspace</button>
+  </div>
+</ng-template>

@@ -1,0 +1,27 @@
+<div class="modal">
+  <div class="modal-header">
+    <img class="modal-icon" src="failure.jpg" />
+
+    <button class="modal-close-button" (click)="closeModal()">
+      <img src="close.jpg" />
+    </button>
+  </div>
+
+  <ng-container *ngIf="data?.messages?.length === 1; else multipleErrors">
+    <h2>{{ data.messages[0] }}</h2>
+
+    <div class="modal-message">
+      Please choose a different slot.
+    </div>
+  </ng-container>
+
+  <ng-template #multipleErrors>
+    <h2>There are some issues:</h2>
+
+    <ul>
+      <li *ngFor="let message of data.messages">{{ message }}</li>
+    </ul>
+  </ng-template>
+
+  <button class="modal-primary-button" (click)="closeModal()">Back to form</button>
+</div>

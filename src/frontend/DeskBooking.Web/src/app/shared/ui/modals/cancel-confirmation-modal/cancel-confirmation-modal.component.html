@@ -1,0 +1,20 @@
+<div class="modal">
+  <div class="modal-header">
+    <img class="modal-icon" src="cancel.jpg" />
+
+    <button class="modal-close-button" (click)="closeModal()">
+      <img src="close.jpg" />
+    </button>
+  </div>
+
+  <h2>Cancel your booking?</h2>
+
+  <div class="modal-message">
+    This action cannot be undone
+  </div>
+
+  <div class="buttons">
+    <button class="modal-button-confirm" (click)="confirmDeletion()">Yes, cancel it</button>
+    <button class="modal-button-close" (click)="closeModal()">No keep it</button>
+  </div>
+</div>
