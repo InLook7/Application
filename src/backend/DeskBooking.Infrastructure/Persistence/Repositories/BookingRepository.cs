@@ -14,14 +14,33 @@ public class BookingRepository : IBookingRepository
         _dbContext = dbContext;
     }
 
-    public async Task<IEnumerable<Booking>> GetAllAsync()
+    public async Task<IEnumerable<Booking>> GetAllWithDetailsAsync()
     {
-        return await _dbContext.Bookings.ToListAsync();
+        return await _dbContext.Bookings
+            .Include(b => b.Workspace)
+                .ThenInclude(w => w.WorkspaceType)
+                    .ThenInclude(wt => wt.Photos)
+            .OrderByDescending(b => b.Id)
+            .ToListAsync();
     }
 
     public async Task<Booking?> GetByIdAsync(int bookingId)
     {
-        return await _dbContext.Bookings.FirstOrDefaultAsync(w => w.Id == bookingId);
+        return await _dbContext.Bookings
+            .Include(b => b.Workspace)
+            .FirstOrDefaultAsync(w => w.Id == bookingId);
+    }
+
+    public async Task<IEnumerable<Booking>> GetOverlappingBookingsAsync(int workspaceId,
+        DateOnly startDate, DateOnly endDate, TimeOnly startTime, TimeOnly endTime)
+    {
+        return await _dbContext.Bookings
+            .Where(b => b.WorkspaceId == workspaceId &&
+                b.StartDate <= endDate &&
+                b.EndDate >= startDate &&
+                b.StartTime < endTime &&
+                b.EndTime > startTime)
+            .ToListAsync();
     }
 
     public async Task CreateAsync(Booking booking)
@@ -36,7 +55,8 @@ public class BookingRepository : IBookingRepository
 
     public async Task<bool> DeleteByIdAsync(int bookingId)
     {
-        var deleteCount = await _dbContext.Bookings.Where(b => b.Id == bookingId)
+        var deleteCount = await _dbContext.Bookings
+            .Where(b => b.Id == bookingId)
             .ExecuteDeleteAsync();
 
         return deleteCount > 0;

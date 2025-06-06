@@ -18,4 +18,21 @@ public class WorkspaceTypeRepository : IWorkspaceTypeRepository
     {
         return await _dbContext.WorkspaceTypes.ToListAsync();
     }
+
+    public async Task<IEnumerable<WorkspaceType>> GetAllWithDetailsAsync()
+    {
+        return await _dbContext.WorkspaceTypes
+            .Include(wt => wt.Photos)
+            .Include(wt => wt.WorkspaceTypeAmenities)
+                .ThenInclude(wta => wta.Amenity)
+            .Include(wt => wt.Workspaces)
+                .ThenInclude(w => w.Bookings)
+            .ToListAsync();
+    }
+
+    public async Task<WorkspaceType?> GetByIdAsync(int workspaceTypeId)
+    {
+        return await _dbContext.WorkspaceTypes
+            .FirstOrDefaultAsync(wt => wt.Id == workspaceTypeId);
+    }
 }

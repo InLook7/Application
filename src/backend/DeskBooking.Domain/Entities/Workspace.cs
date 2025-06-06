@@ -10,6 +10,8 @@ public class Workspace
 
     public int Capacity { get; set; }
 
+    public int Quantity { get; set; }
+
     // Navigation properties
     public WorkspaceType WorkspaceType { get; set; }
 

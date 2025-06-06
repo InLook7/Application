@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Mediator;
-using DeskBooking.Application.Common.Dtos;
-using DeskBooking.Application.Common.Mappings;
+using DeskBooking.Application.WorkspaceTypes.Dtos;
+using DeskBooking.Application.WorkspaceTypes.Mappings;
 using DeskBooking.Domain.Interfaces;
 
 namespace DeskBooking.Application.WorkspaceTypes.Queries.GetAll;

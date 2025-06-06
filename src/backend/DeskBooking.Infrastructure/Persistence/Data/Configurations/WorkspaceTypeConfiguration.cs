@@ -15,6 +15,6 @@ public class WorkspaceTypeConfiguration : IEntityTypeConfiguration<WorkspaceType
             .HasMaxLength(50);
 
         builder.Property(wt => wt.Description)
-            .HasMaxLength(1000);
+            .HasMaxLength(300);
     }
 }

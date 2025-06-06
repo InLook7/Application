@@ -1,8 +1,8 @@
 namespace DeskBooking.Api.Requests;
 
 public record CreateBookingRequest(
-    string UserName,
-    string UserEmail,
+    string BookedByName,
+    string BookedByEmail,
     int WorkspaceId,
     DateOnly StartDate,
     DateOnly EndDate,

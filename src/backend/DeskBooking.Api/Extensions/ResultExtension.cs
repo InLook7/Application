@@ -18,8 +18,8 @@ public static class ResultExtensions
 
     public static ErrorResponse ToErrorResponse<T>(this Result<T> result)
     {
-        var message = result.Errors.First().Message;
+        var messages = result.Errors.Select(e => e.Message).ToList();
 
-        return new ErrorResponse(message);
+        return new ErrorResponse(messages);
     }
 }

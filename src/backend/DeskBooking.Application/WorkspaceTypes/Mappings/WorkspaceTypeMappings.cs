@@ -1,9 +1,9 @@
-using DeskBooking.Application.Common.Dtos;
+using DeskBooking.Application.WorkspaceTypes.Dtos;
 using DeskBooking.Domain.Entities;
 
-namespace DeskBooking.Application.Common.Mappings;
+namespace DeskBooking.Application.WorkspaceTypes.Mappings;
 
-public static class WorkspaceMappings
+public static class WorkspaceTypeMappings
 {
     public static WorkspaceTypeDto ToWorkspaceTypeDto(this WorkspaceType workspaceType)
     {

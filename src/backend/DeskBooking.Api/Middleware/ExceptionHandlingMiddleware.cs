@@ -1,5 +1,3 @@
-using DeskBooking.Api.Responses;
-
 namespace DeskBooking.Api.Middleware;
 
 public class ExceptionHandlingMiddleware
@@ -25,7 +23,7 @@ public class ExceptionHandlingMiddleware
         {
             _logger.LogError(ex, "An unexpected error occurred while processing the request.");
 
-            var response = new ErrorResponse("An unexpected error occurred.");
+            var response = "An unexpected error occurred.";
             context.Response.StatusCode = StatusCodes.Status500InternalServerError;
 
             await context.Response.WriteAsJsonAsync(response);

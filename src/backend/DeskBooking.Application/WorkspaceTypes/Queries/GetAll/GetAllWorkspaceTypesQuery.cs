@@ -1,5 +1,5 @@
 using Mediator;
-using DeskBooking.Application.Common.Dtos;
+using DeskBooking.Application.WorkspaceTypes.Dtos;
 
 namespace DeskBooking.Application.WorkspaceTypes.Queries.GetAll;
 

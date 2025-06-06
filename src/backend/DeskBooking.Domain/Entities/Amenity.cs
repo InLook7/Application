@@ -6,7 +6,7 @@ public class Amenity
 
     public string Name { get; set; }
 
-    public string FileUrl { get; set; }
+    public string FilePath { get; set; }
 
     // Navigation properties
     public virtual ICollection<WorkspaceTypeAmenity> WorkspaceTypeAmenities { get; set; }

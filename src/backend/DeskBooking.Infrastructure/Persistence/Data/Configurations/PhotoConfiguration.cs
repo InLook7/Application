@@ -8,7 +8,7 @@ public class PhotoConfiguration : IEntityTypeConfiguration<Photo>
 {
     public void Configure(EntityTypeBuilder<Photo> builder)
     {
-        builder.Property(p => p.Caption)
-            .HasMaxLength(30);
+        builder.Property(p => p.Title)
+            .HasMaxLength(50);
     }
 }

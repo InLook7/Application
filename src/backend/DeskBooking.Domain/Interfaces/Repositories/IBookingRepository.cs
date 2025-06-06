@@ -4,9 +4,12 @@ namespace DeskBooking.Domain.Interfaces.Repositories;
 
 public interface IBookingRepository
 {
-    Task<IEnumerable<Booking>> GetAllAsync();
+    Task<IEnumerable<Booking>> GetAllWithDetailsAsync();
 
     Task<Booking?> GetByIdAsync(int bookingId);
+
+    Task<IEnumerable<Booking>> GetOverlappingBookingsAsync(int workspaceId,
+        DateOnly startDate, DateOnly endDate, TimeOnly startTime, TimeOnly endTime);
 
     Task CreateAsync(Booking booking); 
 

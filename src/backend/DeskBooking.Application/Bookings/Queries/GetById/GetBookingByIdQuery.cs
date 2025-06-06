@@ -1,6 +1,6 @@
 using Mediator;
 using FluentResults;
-using DeskBooking.Application.Common.Dtos;
+using DeskBooking.Application.Bookings.Dtos;
 
 namespace DeskBooking.Application.Bookings.Queries.GetById;
 

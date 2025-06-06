@@ -1,6 +1,14 @@
 [Bb]in/
 [Oo]bj/
 
+dist/
+tmp/
+out-tsc/
+
+node_modules/
+.angular/
+npm-debug.log
+
 .vscode/
 .vs/
 .idea/

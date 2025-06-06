@@ -1,3 +1,3 @@
 namespace DeskBooking.Api.Responses;
 
-public record ErrorResponse(string Error);
+public record ErrorResponse(List<string> Errors);

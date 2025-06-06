@@ -4,9 +4,9 @@ public class Booking
 {
     public int Id { get; set; }
 
-    public string UserName { get; set; }
+    public string BookedByName { get; set; }
 
-    public string UserEmail { get; set; }
+    public string BookedByEmail { get; set; }
 
     public int WorkspaceId { get; set; }
 
@@ -17,8 +17,6 @@ public class Booking
     public TimeOnly StartTime { get; set; }
 
     public TimeOnly EndTime { get; set; }
-
-    public DateTime CreatedAt { get; set; }
 
     // Navigation properties
     public Workspace Workspace { get; set; }

@@ -4,7 +4,7 @@ using DeskBooking.Api.Extensions;
 using DeskBooking.Application.Bookings.Commands.Create;
 using DeskBooking.Application.Bookings.Commands.Delete;
 using DeskBooking.Application.Bookings.Commands.Patch;
-using DeskBooking.Application.Bookings.Queries.GetAll;
+using DeskBooking.Application.Bookings.Queries.GetList;
 using DeskBooking.Application.Bookings.Queries.GetById;
 
 namespace DeskBooking.Api.Endpoints;
@@ -15,18 +15,18 @@ public static class BookingEndpoints
     {
         var group = app.MapGroup("api/v1/bookings");
 
-        group.MapGet("/", GetBookings);
+        group.MapGet("/", GetBookingList);
         group.MapGet("/{id}", GetBookingById);
         group.MapPost("/", CreateBooking);
         group.MapPatch("/{id}", PatchBooking);
         group.MapDelete("/{id}", DeleteBookingById);
     }
 
-    private static async Task<IResult> GetBookings(IMediator mediator)
+    private static async Task<IResult> GetBookingList(IMediator mediator)
     {
-        var bookingDtos = await mediator.Send(new GetAllBookingsQuery());
+        var bookingListItemDtos = await mediator.Send(new GetBookingListQuery());
 
-        return TypedResults.Ok(bookingDtos);
+        return TypedResults.Ok(bookingListItemDtos);
     }
 
     private static async Task<IResult> GetBookingById(
@@ -48,8 +48,8 @@ public static class BookingEndpoints
         IMediator mediator)
     {
         var command = new CreateBookingCommand(
-            request.UserName,
-            request.UserEmail,
+            request.BookedByName,
+            request.BookedByEmail,
             request.WorkspaceId,
             request.StartDate,
             request.EndDate,
@@ -58,6 +58,7 @@ public static class BookingEndpoints
         );
 
         var result = await mediator.Send(command);
+
 
         if (result.IsValidationError())
         {

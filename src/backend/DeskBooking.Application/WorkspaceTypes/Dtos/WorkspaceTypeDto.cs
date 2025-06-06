@@ -1,4 +1,4 @@
-namespace DeskBooking.Application.Common.Dtos;
+namespace DeskBooking.Application.WorkspaceTypes.Dtos;
 
 public record WorkspaceTypeDto(
     int Id,

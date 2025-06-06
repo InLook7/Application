@@ -1,9 +1,9 @@
 using Microsoft.Extensions.Logging;
 using Mediator;
 using FluentResults;
-using DeskBooking.Application.Common.Dtos;
+using DeskBooking.Application.Bookings.Dtos;
+using DeskBooking.Application.Bookings.Mappings;
 using DeskBooking.Application.Common.Errors;
-using DeskBooking.Application.Common.Mappings;
 using DeskBooking.Domain.Interfaces;
 
 namespace DeskBooking.Application.Bookings.Queries.GetById;

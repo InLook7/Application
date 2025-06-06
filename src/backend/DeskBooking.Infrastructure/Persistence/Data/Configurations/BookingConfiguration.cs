@@ -8,10 +8,10 @@ public class BookingConfiguration : IEntityTypeConfiguration<Booking>
 {
     public void Configure(EntityTypeBuilder<Booking> builder)
     {
-        builder.Property(w => w.UserName)
+        builder.Property(b => b.BookedByName)
             .HasMaxLength(100);
 
-        builder.Property(w => w.UserEmail)
+        builder.Property(b => b.BookedByEmail)
             .HasMaxLength(100);
     }
 }

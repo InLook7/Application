@@ -1,12 +1,12 @@
 using Mediator;
 using FluentResults;
-using DeskBooking.Application.Common.Dtos;
+using DeskBooking.Application.Bookings.Dtos;
 
 namespace DeskBooking.Application.Bookings.Commands.Create;
 
 public record CreateBookingCommand(
-    string UserName,
-    string UserEmail,
+    string BookedByName,
+    string BookedByEmail,
     int WorkspaceId,
     DateOnly StartDate,
     DateOnly EndDate,

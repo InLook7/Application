@@ -16,6 +16,15 @@ public class WorkspaceRepository : IWorkspaceRepository
 
     public async Task<Workspace?> GetByIdAsync(int workspaceId)
     {
-        return await _dbContext.Workspaces.FirstOrDefaultAsync(w => w.Id == workspaceId);
+        return await _dbContext.Workspaces
+            .Include(w => w.WorkspaceType)
+            .FirstOrDefaultAsync(w => w.Id == workspaceId);
+    }
+
+    public async Task<IEnumerable<Workspace>> GetByWorkspaceTypeId(int workspaceTypeId)
+    {
+        return await _dbContext.Workspaces
+            .Where(w => w.WorkspaceTypeId == workspaceTypeId)
+            .ToListAsync();
     }
 }
