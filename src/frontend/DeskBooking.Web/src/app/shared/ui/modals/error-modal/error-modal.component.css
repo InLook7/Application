@@ -1,0 +1,47 @@
+.modal {
+  padding: 1.875rem;
+  max-width: 35rem;
+  text-align: left;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.modal-icon {
+  width: 4.2rem;
+  height: 4rem;
+}
+
+.modal-close-button {
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.modal-message {
+  color: #3b3b3b;
+  font-size: 0.9rem;
+  margin: 0.9rem 0;
+}
+
+.modal-primary-button {
+  background-color: #6c5ce7;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-top: 0.625rem;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.modal-primary-button:hover {
+  background-color: #5a4ed0;
+}

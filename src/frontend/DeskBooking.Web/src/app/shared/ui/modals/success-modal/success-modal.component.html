@@ -1,0 +1,20 @@
+<div class="modal">
+  <div class="modal-header">
+    <img class="modal-icon" src="success.jpg" />
+
+    <button class="modal-close-button" (click)="closeModal()">
+      <img src="close.jpg" />
+    </button>
+  </div>
+
+  <h2>You're all set!</h2>
+
+  <div class="modal-message">
+    Your workspace is booked from 
+    <strong>{{ data.startDate | date:'MMMM d, yyyy' }} to {{ data.endDate | date:'MMMM d, yyyy' }}</strong>. 
+    A confirmation has been sent to your email 
+    <strong>{{ data.bookedByEmail }}</strong>
+  </div>
+
+  <button class="modal-primary-button" (click)="goToBookings()">My bookings</button>
+</div>

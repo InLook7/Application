@@ -1,0 +1,155 @@
+.container {
+  max-width: 65rem; 
+  margin: auto;
+  padding: 1.25rem;
+}
+
+.workspace-card {
+  display: flex;
+  align-items: flex-start;
+  background-color: #ffffff;
+  border-radius: 0.75rem; 
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.25rem;
+  padding: 1rem;
+  position: relative;
+}
+
+.info-row {
+  display: flex;
+  gap: 10rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.amenities,
+.capacity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 12rem;
+}
+
+.workspace-name {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem; 
+  font-weight: 700;
+}
+
+.workspace-description {
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.workspace-amenities {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.btn-primary {
+  background-color: #5c5af3;
+  color: #ffffff;
+  padding: 0.7rem 1.875rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  min-width: 8rem; 
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #4f46e5;
+  color: #f9fafb;
+}
+
+.workspace-gallery {
+  margin-right: 1.5rem;
+  max-width: 12rem;
+  flex-shrink: 0;
+}
+
+.workspace-image {
+  width: 100%;
+  max-width: 13rem;
+  height: 7.25rem;
+  border-radius: 0.75rem;
+  object-fit: cover;
+}
+
+.thumbnail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.625rem;
+}
+
+.thumbnail {
+  width: 30%;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  opacity: 0.5;
+}
+
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.thumbnail.selected {
+  opacity: 1;
+}
+
+.icons {
+  margin: 0.5rem 0 1rem;
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+}
+
+.details {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  background-color: #f5f3fb;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.availability {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.625rem;
+}
+
+.availability li {
+  margin-bottom: 0.5rem;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.notification {
+  background-color: #e6f4ea;
+  color: #202124;
+  padding: 10px 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  max-width: 700px;
+}
+
+.notification-icon {
+  width: 30px;
+  margin-right: 10px;
+}

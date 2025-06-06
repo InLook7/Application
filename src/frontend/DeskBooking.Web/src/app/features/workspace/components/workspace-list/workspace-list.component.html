@@ -1,0 +1,89 @@
+<div class="container">
+  <h1>Available workspaces</h1>
+
+  <ng-container *ngIf="workspaceTypeListItems$ | async as workspaceTypes; else loading">
+    <div class="workspace-card" *ngFor="let workspaceType of workspaceTypes">
+      <div class="workspace-gallery">
+        <img class="workspace-image" [src]="getImageUrl(getSelectedImage(workspaceType))" [alt]="workspaceType.name">
+        
+        <div class="thumbnail-row">
+          <img 
+            class="thumbnail"
+            *ngFor="let imagePath of workspaceType.photoFilePaths"
+            [src]="getImageUrl(imagePath)"
+            [alt]="workspaceType.name"
+            (click)="selectImage(workspaceType.id, imagePath)"
+            [class.selected]="getSelectedImage(workspaceType) === imagePath"
+          />
+        </div>
+      </div>
+
+      <div class="workspace-details">
+        <h3 class="workspace-name">{{ workspaceType.name }}</h3>
+
+        <p>
+          <span class="workspace-description">{{ workspaceType.description }}</span>
+        </p>
+
+        <div class="info-row">
+          <div class="amenities">
+            <span class="workspace-amenities">Amenities</span>
+
+            <div class="icons">
+               <img 
+                class="icon"
+                *ngFor="let imagePath of workspaceType.amenityFilePaths"
+                [src]="getImageUrl(imagePath)"
+              />
+            </div>
+          </div>
+
+          <div class="capacity">
+            <ng-container *ngIf="workspaceType.name === 'Open Space'; else capacityOptions">
+              <span class="workspace-amenities">Availability</span>
+              <div class="details">
+                <img class="icon" src="desk.jpg" />
+                <span>{{ getQuantity(workspaceType.capacities) }} desks</span>
+              </div>
+            </ng-container>
+
+            <ng-template #capacityOptions>
+              <span class="workspace-amenities">Capacity options</span>
+              <div class="details">
+                <img class="icon" src="room.jpg" />
+                <span>{{ getCapacityList(workspaceType.capacities) }} people</span>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+
+        <ng-container  *ngIf="workspaceType.name !== 'Open Space'">
+          <span class="workspace-amenities">Availability</span>
+
+          <ul class="availability">
+            <li *ngFor="let capacityGroup of workspaceType.capacities">
+              <strong>{{ capacityGroup.quantity }} {{ capacityGroup.quantity > 1 ? 'rooms' : 'room' }}</strong>
+              for {{ capacityGroup.capacity }} {{ capacityGroup.capacity > 1 ? 'people' : 'person' }}
+            </li>
+          </ul>
+        </ng-container >
+
+        <ng-container *ngIf="firstBooking$ | async as firstBooking">
+          <div class="notification" *ngIf="firstBooking.workspaceTypeName == workspaceType.name">
+            <img class="notification-icon" src="checkmark.jpg" />
+            <span>
+              This workspace is already booked by you! For {{ firstBooking.workspaceCapacity }} {{ firstBooking.workspaceCapacity === 1 ? 'person' : 'people' }}.
+              <strong> {{ firstBooking.startDate | date:'MMMM d, yyyy' }} - {{ firstBooking.endDate | date:'MMMM d, yyyy' }} </strong>
+            </span>
+          </div>
+        </ng-container>
+      </div>
+
+      <button class="btn-primary" (click)="goToCreate()">Book now</button>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #loading>
+  <p>Loading workspaces...</p>
+</ng-template>

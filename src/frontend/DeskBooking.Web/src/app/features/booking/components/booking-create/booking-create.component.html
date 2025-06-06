@@ -1,0 +1,97 @@
+<div class="container">
+  <h1>Book your workspace</h1>
+
+  <form class="form-sections" [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+    <div class="reservation-details">
+      <h2>Reservation details</h2>
+
+      <label>Name</label>
+      <input class="name" type="text" formControlName="bookedByName" />
+
+      <label>Email</label>
+      <input class="email" type="email" formControlName="bookedByEmail" />
+
+      <label>Workspace type</label>
+      <select formControlName="workspaceTypeId">
+        <option value="" disabled selected hidden>Choose your workspace</option>
+        <option *ngFor="let workspaceType of (workspaceTypes$ | async)" [value]="workspaceType.id">
+          {{ workspaceType.name }}
+        </option>
+      </select>
+
+      <ng-container *ngIf="workspaces$ | async as workspaces">
+        <ng-container *ngIf="workspaces.length > 4; else radioList">
+          <label>What kind of open space do you need?</label>
+
+          <select formControlName="workspaceId">
+            <option value="" disabled selected hidden>Choose a type</option>
+            <option *ngFor="let workspace of workspaces" [value]="workspace.id">
+              {{ workspace.name }}
+            </option>
+          </select>
+        </ng-container>
+
+        <ng-template #radioList>
+          <label>What room size do you need?</label>
+
+          <div class="room-options">
+            <div *ngFor="let workspace of workspaces">
+              <input class="room" type="radio" formControlName="workspaceId" [value]="workspace.id" />
+              <span>Room for {{ workspace.capacity }} {{ workspace.capacity === 1 ? 'person' : 'people' }}</span>
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+    </div>
+
+    <div class="date-time">
+      <h2>Choose date and time</h2>
+      
+      <label>Start date</label>
+      <div class="date-select" formGroupName="startDate">
+        <select formControlName="day">
+          <option value="" disabled selected hidden>Day</option>
+          <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+        </select>
+        <select formControlName="month">
+          <option value="" disabled selected hidden>Month</option>
+          <option *ngFor="let month of months" [value]="month.name">{{ month.name }}</option>
+        </select>
+        <select formControlName="year">
+          <option value="" disabled selected hidden>Year</option>
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+
+      <label>End date</label>
+      <div class="date-select" formGroupName="endDate">
+        <select formControlName="day">
+          <option value="" disabled selected hidden>Day</option>
+          <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+        </select>
+        <select formControlName="month">
+          <option value="" disabled selected hidden>Month</option>
+          <option *ngFor="let month of months" [value]="month.name">{{ month.name }}</option>
+        </select>
+        <select formControlName="year">
+          <option value="" disabled selected hidden>Year</option>
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+
+      <label>Start time</label>
+      <select formControlName="startTime">
+        <option value="" disabled selected hidden>Choose start time</option>
+        <option *ngFor="let time of times" [value]="time">{{ time | timeAmPm }}</option>
+      </select>
+
+      <label>End time</label>
+      <select formControlName="endTime">
+        <option value="" disabled selected hidden>Choose end time</option>
+        <option *ngFor="let time of times" [value]="time">{{ time | timeAmPm }}</option>
+      </select>
+      
+      <button class="submit" type="submit" [disabled]="bookingForm.invalid">Submit</button>
+    </div>
+  </form>
+</div>
