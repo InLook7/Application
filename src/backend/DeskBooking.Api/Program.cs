@@ -32,8 +32,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
+app.MapCoworkingEndpoints();
 app.MapWorkspaceTypeEndpoints();
 app.MapBookingEndpoints();
+app.MapAssistantEndpoints();
 
 app.UseStaticFiles();
 
