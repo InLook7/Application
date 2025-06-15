@@ -6,7 +6,6 @@ import { map, Observable } from 'rxjs';
 import { WorkspaceTypeListItem } from '../../models/workspace-type-list-item.model';
 import { CapacityQuantityGroup } from '../../models/capacity-quantity-group.model';
 import { BookingListItem } from '../../../booking/models/booking-list-item.model';
-import { WorkspaceTypeApiService } from '../../../../shared/services/workspace-type-api.service';
 import { ImageUrlService } from '../../../../shared/services/image-url.service';
 import { BookingApiService } from '../../../booking/services/booking-api.service';
 import { CoworkingApiService } from '../../../../shared/services/coworking-api.service';
