@@ -6,13 +6,15 @@ import { Store } from '@ngrx/store';
 
 import { CoworkingListItem } from '../../models/coworking-list-item.model';
 import { ImageUrlService } from '../../../../shared/services/image-url.service';
+import { ButtonComponent } from '../../../../../stories/button/button.component';
 import * as CoworkingSelectors from '../../store/coworking.selectors';
 import * as CoworkingActions from '../../store/coworking.actions';
 
 @Component({
   selector: 'app-coworking-list',
   imports: [
-    CommonModule
+    CommonModule,
+    ButtonComponent
   ],
   templateUrl: './coworking-list.component.html',
   styleUrl: './coworking-list.component.css'

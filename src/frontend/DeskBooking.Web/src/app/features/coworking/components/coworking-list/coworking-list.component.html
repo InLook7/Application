@@ -24,7 +24,7 @@
           </p>
         </div>
 
-        <button class="btn-primary" (click)="goToWorkspaces(coworking.id)">View details</button>
+        <app-button [label]="'View details'" (clicked)="goToWorkspaces(coworking.id)"></app-button>
       </div>
     </ng-container>
   </ng-container>

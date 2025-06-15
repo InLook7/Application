@@ -9,11 +9,13 @@ import { BookingListItem } from '../../../booking/models/booking-list-item.model
 import { ImageUrlService } from '../../../../shared/services/image-url.service';
 import { BookingApiService } from '../../../booking/services/booking-api.service';
 import { CoworkingApiService } from '../../../../shared/services/coworking-api.service';
+import { ButtonComponent } from '../../../../../stories/button/button.component';
 
 @Component({
   selector: 'app-workspace-list',
   imports: [
-    CommonModule
+    CommonModule,
+    ButtonComponent
   ],
   templateUrl: './workspace-list.component.html',
   styleUrl: './workspace-list.component.css'

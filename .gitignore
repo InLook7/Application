@@ -4,10 +4,12 @@
 dist/
 tmp/
 out-tsc/
-
 node_modules/
 .angular/
 npm-debug.log
+
+*storybook.log
+storybook-static
 
 .vscode/
 .vs/
