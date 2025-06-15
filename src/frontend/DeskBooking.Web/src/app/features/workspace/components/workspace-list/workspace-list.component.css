@@ -141,15 +141,15 @@
 .notification {
   background-color: #e6f4ea;
   color: #202124;
-  padding: 10px 15px;
-  border-radius: 10px;
+  padding: 0.625rem 0.9375rem;
+  border-radius: 0.625rem;
   display: flex;
   align-items: center;
-  font-size: 14px;
-  max-width: 700px;
+  font-size: 0.875rem;
+  max-width: 42rem;
 }
 
 .notification-icon {
-  width: 30px;
-  margin-right: 10px;
+  width: 1.875rem;
+  margin-right: 0.625rem;
 }
