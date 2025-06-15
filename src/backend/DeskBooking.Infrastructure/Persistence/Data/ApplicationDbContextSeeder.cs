@@ -454,8 +454,48 @@ public class ApplicationDbContextSeeder
             },
             new Workspace
             {
-                Name = "Big Conference Meeting Room 1",
+                Name = "Conference Meeting Room 1",
+                CoworkingId = 1,
+                WorkspaceTypeId = 3,
+                Capacity = 10,
+                Quantity = 4
+            },
+            new Workspace
+            {
+                Name = "Conference Meeting Room 2",
                 CoworkingId = 2,
+                WorkspaceTypeId = 3,
+                Capacity = 10,
+                Quantity = 4
+            },
+            new Workspace
+            {
+                Name = "Conference Meeting Room 3",
+                CoworkingId = 3,
+                WorkspaceTypeId = 3,
+                Capacity = 10,
+                Quantity = 4
+            },
+            new Workspace
+            {
+                Name = "Conference Meeting Room 4",
+                CoworkingId = 4,
+                WorkspaceTypeId = 3,
+                Capacity = 10,
+                Quantity = 4
+            },
+            new Workspace
+            {
+                Name = "Conference Meeting Room 5",
+                CoworkingId = 5,
+                WorkspaceTypeId = 3,
+                Capacity = 10,
+                Quantity = 4
+            },
+            new Workspace
+            {
+                Name = "Big Conference Meeting Room 1",
+                CoworkingId = 1,
                 WorkspaceTypeId = 3,
                 Capacity = 20,
                 Quantity = 1
@@ -479,7 +519,7 @@ public class ApplicationDbContextSeeder
             new Workspace
             {
                 Name = "Big Conference Meeting Room 4",
-                CoworkingId = 3,
+                CoworkingId = 4,
                 WorkspaceTypeId = 3,
                 Capacity = 20,
                 Quantity = 1
@@ -487,30 +527,6 @@ public class ApplicationDbContextSeeder
             new Workspace
             {
                 Name = "Big Conference Meeting Room 5",
-                CoworkingId = 4,
-                WorkspaceTypeId = 3,
-                Capacity = 20,
-                Quantity = 1
-            },
-            new Workspace
-            {
-                Name = "Big Conference Meeting Room 6",
-                CoworkingId = 4,
-                WorkspaceTypeId = 3,
-                Capacity = 20,
-                Quantity = 1
-            },
-            new Workspace
-            {
-                Name = "Big Conference Meeting Room 7",
-                CoworkingId = 5,
-                WorkspaceTypeId = 3,
-                Capacity = 20,
-                Quantity = 1
-            },
-            new Workspace
-            {
-                Name = "Big Conference Meeting Room 8",
                 CoworkingId = 5,
                 WorkspaceTypeId = 3,
                 Capacity = 20,
