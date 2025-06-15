@@ -1,0 +1,44 @@
+<div class="container">
+  <h1>Available coworking spaces</h1>
+
+  <ng-container *ngIf="coworkingListItems$ | async as coworkings; else loading">
+    <ng-container *ngIf="coworkings.length > 0; else noCoworkings">
+      <div class="coworking-card" *ngFor="let coworking of coworkings">
+        <img class="room-image" [src]="getImageUrl(coworking.photoFilePath)" />
+
+        <div class="info">
+          <h3 class="title">{{ coworking.name }}</h3>
+
+          <p>
+            <span class="coworking-description">{{ coworking.description }}</span>
+          </p>
+
+          <p>
+            <img class="icon" src="location.jpg" />
+            <span class="coworking-address">{{ coworking.address }}</span>
+          </p>
+
+          <p>
+            <img class="icon" src="desk.jpg" /> 
+            <span class="coworking-availability">{{ coworking.availableDesks }} desks • {{ coworking.availablePrivateRooms }} private rooms • {{ coworking.availableMeetingRooms }} meeting rooms</span>
+          </p>
+        </div>
+
+        <app-button [label]="'View details'" (clicked)="goToWorkspaces(coworking.id)"></app-button>
+      </div>
+    </ng-container>
+  </ng-container>
+
+<ng-template #loading>
+  <p>Loading coworkings...</p>
+</ng-template>
+
+<ng-template #noCoworkings>
+  <div class="container no-coworkings">
+    <div class="no-coworkings-icon">🔍</div>
+    <div class="message-title">No coworking spaces available at the moment</div>
+    <div class="message-subtitle">Please check back later or try adjusting your filters</div>
+
+    <button class="btn">Refresh list</button>
+  </div>
+</ng-template>

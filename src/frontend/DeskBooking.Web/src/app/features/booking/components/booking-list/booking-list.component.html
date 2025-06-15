@@ -3,35 +3,61 @@
 
   <ng-container *ngIf="bookingListItems$ | async as bookings; else loading">
     <ng-container *ngIf="bookings.length > 0; else noBookings">
-    <div class="booking-card" *ngFor="let booking of bookings">
-      <img class="room-image" [src]="getImageUrl(booking.photoFilePath)" />
+      <div class="booking-card" *ngFor="let booking of bookings">
+        <img class="room-image" [src]="getImageUrl(booking.photoFilePath)" />
 
-      <div class="details">
-        <h3>{{ booking.workspaceTypeName }} for {{ booking.workspaceCapacity }} {{ booking.workspaceCapacity === 1 ? 'person' : 'people' }}</h3>
+        <div class="details">
+          <h3>{{ booking.workspaceTypeName }} for {{ booking.workspaceCapacity }} {{ booking.workspaceCapacity === 1 ? 'person' : 'people' }}</h3>
 
-        <p>
-          <img class="icon" src="calendar.jpg" />
-          <span class="date-range">{{ booking.startDate | date:'MMMM d, yyyy' }} - {{ booking.endDate | date:'MMMM d, yyyy' }}</span>
-          <span class="note">{{ booking.startDate | dateRangeDuration: booking.endDate }}</span>
-        </p>
+          <p>
+            <img class="icon" src="calendar.jpg" />
+            <span class="date-range">{{ booking.startDate | date:'MMMM d, yyyy' }} - {{ booking.endDate | date:'MMMM d, yyyy' }}</span>
+            <span class="note">{{ booking.startDate | dateRangeDuration: booking.endDate }}</span>
+          </p>
 
-        <p>
-          <img class="icon" src="clock.jpg" /> 
-          <span class="booking-time">from {{ booking.startTime | timeAmPm }} to {{ booking.endTime | timeAmPm }}</span>
-        </p>
+          <p>
+            <img class="icon" src="clock.jpg" /> 
+            <span class="booking-time">from {{ booking.startTime | timeAmPm }} to {{ booking.endTime | timeAmPm }}</span>
+          </p>
+        </div>
+
+        <div class="actions">
+          <button class="edit" (click)="goToEdit(booking.id)">
+            <img src="edit.jpg" /> 
+          </button>
+          <button class="delete" (click)="goToCancelConfirmationModal(booking.id)">
+            <img src="delete.jpg" /> 
+          </button>
+        </div>
       </div>
-
-      <div class="actions">
-        <button class="edit" (click)="goToEdit(booking.id)">
-          <img src="edit.jpg" /> 
-        </button>
-        <button class="delete" (click)="goToCancelConfirmationModal(booking.id)">
-          <img src="delete.jpg" /> 
-        </button>
-      </div>
-    </div>
     </ng-container>
   </ng-container>
+
+  <h2>AI assistant</h2>
+  <ng-container *ngIf="assistantResponse$ | async as assistantResponse">
+    <div class="section">
+      <div class="response">
+        {{ assistantResponse.answer }}
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="section">
+    <h3 class="section-title">Example questions</h3>
+
+    <div class="buttons">
+      <button class="btn" (click)="askAssistant('How many bookings do I have? No need to list them.')">How many bookings do I have?</button>
+      <button class="btn" (click)="askAssistant('Listing all my upcoming bookings')">Listing all my upcoming bookings</button>
+      <button class="btn" (click)="askAssistant('Listing bookings for the previous week')">What was booked last week?</button>
+      <button class="btn" (click)="askAssistant('Do I have any bookings today?')">Do I have any bookings today?</button>
+    </div>
+
+    <div class="ask">
+      <input class="ask-input" type="text" placeholder="Ask anything..." #questionInput/>
+      <button class="send-btn" (click)="askAssistant(questionInput.value)">➤</button>
+    </div>
+  </div>
+</div>
 
 <ng-template #loading>
   <p>Loading bookings...</p>
@@ -43,6 +69,6 @@
     <div class="message-title">You don't have any bookings yet</div>
     <div class="message-subtitle">Start by choosing a coworking space</div>
 
-    <button class="btn" (click)="goToWorkspaces()">Select a workspace</button>
+    <button class="back" (click)="goToWorkspaces()">Select a workspace</button>
   </div>
 </ng-template>

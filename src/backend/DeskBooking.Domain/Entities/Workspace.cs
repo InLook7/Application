@@ -6,6 +6,8 @@ public class Workspace
 
     public string Name { get; set; }
 
+    public int CoworkingId { get; set; }
+
     public int WorkspaceTypeId { get; set; }
 
     public int Capacity { get; set; }
@@ -13,6 +15,8 @@ public class Workspace
     public int Quantity { get; set; }
 
     // Navigation properties
+    public Coworking Coworking { get; set; }
+
     public WorkspaceType WorkspaceType { get; set; }
 
     public ICollection<Booking> Bookings { get; set; }

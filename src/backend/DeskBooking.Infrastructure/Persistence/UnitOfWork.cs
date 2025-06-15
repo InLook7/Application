@@ -14,6 +14,9 @@ public class UnitOfWork : IUnitOfWork
         _dbContext = dbContext;
     }
 
+    public ICoworkingRepository CoworkingRepository
+        => new CoworkingRepository(_dbContext);
+
     public IWorkspaceTypeRepository WorkspaceTypeRepository
         => new WorkspaceTypeRepository(_dbContext);
 

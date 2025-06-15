@@ -3,11 +3,17 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
 
 import { BookingListItem } from '../../models/booking-list-item.model';
 import { BookingApiService } from '../../services/booking-api.service';
 import { ImageUrlService } from '../../../../shared/services/image-url.service';
 import { CancelConfirmationModalComponent } from '../../../../shared/ui/modals/cancel-confirmation-modal/cancel-confirmation-modal.component';
+import { AskBookingAssistantResponse } from '../../../../shared/models/ask-booking-assistant-response';
+import { AssistantApiService } from '../../../../shared/services/assistant-api.service';
+import { AskBookingAssistantRequest } from '../../../../shared/models/ask-booking-assistant-request';
+import * as BookingSelectors from '../../store/booking.selectors';
+import * as CoworkingActions from '../../store/booking.actions';
 import { TimeAmPmPipe } from '../../pipes/timeAmPm.pipe';
 import { DateRangeDurationPipe } from '../../pipes/dateRangeDuration.pipe';
 
@@ -23,14 +29,21 @@ import { DateRangeDurationPipe } from '../../pipes/dateRangeDuration.pipe';
 })
 export class BookingListComponent {
   bookingListItems$: Observable<BookingListItem[]>;
+  assistantResponse$!: Observable<AskBookingAssistantResponse>;
 
   constructor(
+    private store: Store,
     private router: Router,
     private dialog: MatDialog,
     private bookingApi: BookingApiService,
+    private assistantApi: AssistantApiService,
     private imageUrlService: ImageUrlService,
   ) {
-    this.bookingListItems$ = this.bookingApi.getBookingList();
+    this.bookingListItems$ = this.store.select(BookingSelectors.selectBookingList);
+  }
+
+  ngOnInit() {
+    this.store.dispatch(CoworkingActions.loadBookingList());
   }
 
   getImageUrl(path: string): string {
@@ -55,5 +68,13 @@ export class BookingListComponent {
 
   goToWorkspaces() {
     this.router.navigate([""]);
+  }
+
+  askAssistant(question: string) {
+    const request: AskBookingAssistantRequest = {
+      question: question
+    };
+
+    this.assistantResponse$ = this.assistantApi.askBookingAssistant(request);
   }
 }

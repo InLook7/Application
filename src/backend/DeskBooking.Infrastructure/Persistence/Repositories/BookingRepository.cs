@@ -19,7 +19,7 @@ public class BookingRepository : IBookingRepository
         return await _dbContext.Bookings
             .Include(b => b.Workspace)
                 .ThenInclude(w => w.WorkspaceType)
-                    .ThenInclude(wt => wt.Photos)
+                    .ThenInclude(wt => wt.WorkspacePhotos)
             .OrderByDescending(b => b.Id)
             .ToListAsync();
     }

@@ -68,18 +68,18 @@
           </ul>
         </ng-container >
 
-        <ng-container *ngIf="firstBooking$ | async as firstBooking">
-          <div class="notification" *ngIf="firstBooking.workspaceTypeName == workspaceType.name">
+        <ng-container *ngIf="booking$ | async as booking">
+          <div class="notification" *ngIf="booking.workspaceTypeName == workspaceType.name">
             <img class="notification-icon" src="checkmark.jpg" />
             <span>
-              This workspace is already booked by you! For {{ firstBooking.workspaceCapacity }} {{ firstBooking.workspaceCapacity === 1 ? 'person' : 'people' }}.
-              <strong> {{ firstBooking.startDate | date:'MMMM d, yyyy' }} - {{ firstBooking.endDate | date:'MMMM d, yyyy' }} </strong>
+              This workspace is already booked by you! For {{ booking.workspaceCapacity }} {{ booking.workspaceCapacity === 1 ? 'person' : 'people' }}.
+              <strong> {{ booking.startDate | date:'MMMM d, yyyy' }} - {{ booking.endDate | date:'MMMM d, yyyy' }} </strong>
             </span>
           </div>
         </ng-container>
       </div>
 
-      <button class="btn-primary" (click)="goToCreate()">Book now</button>
+      <app-button [label]="'Book now'" (clicked)="goToCreate()"></app-button>
     </div>
   </ng-container>
 </div>

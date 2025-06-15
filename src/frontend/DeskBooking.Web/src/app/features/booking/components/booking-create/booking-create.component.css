@@ -36,7 +36,7 @@ select {
   font-size: 0.875rem;
   padding: 0.625rem;
   border-radius: 0.5rem;
-  border: 1px solid #c2bcd8;
+  border: 0.0625rem solid #c2bcd8;
   margin-bottom: 1.875rem;
   outline-offset: 0.125rem;
   outline-color: transparent;

@@ -11,7 +11,7 @@ public class WorkspaceType
     // Navigation properties
     public virtual ICollection<Workspace> Workspaces { get; set; }
 
-    public virtual ICollection<Photo> Photos { get; set; }
+    public virtual ICollection<WorkspacePhoto> WorkspacePhotos { get; set; }
 
     public virtual ICollection<WorkspaceTypeAmenity> WorkspaceTypeAmenities { get; set; }
 }

@@ -36,7 +36,7 @@ select {
   font-size: 0.875rem;
   padding: 0.625rem;
   border-radius: 0.5rem;
-  border: 1px solid #c2bcd8;
+  border: 0.0625rem solid #c2bcd8;
   margin-bottom: 1.875rem;
   outline-offset: 0.125rem;
   outline-color: transparent;
@@ -118,12 +118,12 @@ button {
 }
 
 .cancel {
-  background-color: #ffffff ;
+  background-color: #ffffff;
   color: #5c5af3;
-  border: 1px solid #5c5af3;
+  border: 0.0625rem solid #5c5af3;
 }
 
 .cancel:hover {
   color: #0d00ff;
-  border: 1px solid #0d00ff;
+  border: 0.0625rem solid #0d00ff;
 }

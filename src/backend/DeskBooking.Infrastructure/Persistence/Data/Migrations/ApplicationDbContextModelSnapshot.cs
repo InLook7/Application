@@ -87,7 +87,101 @@ namespace DeskBooking.Infrastructure.Persistence.Data.Migrations
                     b.ToTable("Bookings");
                 });
 
-            modelBuilder.Entity("DeskBooking.Domain.Entities.Photo", b =>
+            modelBuilder.Entity("DeskBooking.Domain.Entities.Coworking", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("Coworkings");
+                });
+
+            modelBuilder.Entity("DeskBooking.Domain.Entities.CoworkingPhoto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CoworkingId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CoworkingId");
+
+                    b.ToTable("CoworkingPhotos");
+                });
+
+            modelBuilder.Entity("DeskBooking.Domain.Entities.Workspace", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Capacity")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("CoworkingId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("WorkspaceTypeId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CoworkingId");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.HasIndex("WorkspaceTypeId");
+
+                    b.ToTable("Workspaces");
+                });
+
+            modelBuilder.Entity("DeskBooking.Domain.Entities.WorkspacePhoto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -111,39 +205,7 @@ namespace DeskBooking.Infrastructure.Persistence.Data.Migrations
 
                     b.HasIndex("WorkspaceTypeId");
 
-                    b.ToTable("Photos");
-                });
-
-            modelBuilder.Entity("DeskBooking.Domain.Entities.Workspace", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Capacity")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("WorkspaceTypeId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.HasIndex("WorkspaceTypeId");
-
-                    b.ToTable("Workspaces");
+                    b.ToTable("WorkspacePhotos");
                 });
 
             modelBuilder.Entity("DeskBooking.Domain.Entities.WorkspaceType", b =>
@@ -197,21 +259,40 @@ namespace DeskBooking.Infrastructure.Persistence.Data.Migrations
                     b.Navigation("Workspace");
                 });
 
-            modelBuilder.Entity("DeskBooking.Domain.Entities.Photo", b =>
+            modelBuilder.Entity("DeskBooking.Domain.Entities.CoworkingPhoto", b =>
                 {
-                    b.HasOne("DeskBooking.Domain.Entities.WorkspaceType", "WorkspaceType")
-                        .WithMany("Photos")
-                        .HasForeignKey("WorkspaceTypeId")
+                    b.HasOne("DeskBooking.Domain.Entities.Coworking", "Coworking")
+                        .WithMany("CoworkingPhotos")
+                        .HasForeignKey("CoworkingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("WorkspaceType");
+                    b.Navigation("Coworking");
                 });
 
             modelBuilder.Entity("DeskBooking.Domain.Entities.Workspace", b =>
                 {
+                    b.HasOne("DeskBooking.Domain.Entities.Coworking", "Coworking")
+                        .WithMany("Workspaces")
+                        .HasForeignKey("CoworkingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("DeskBooking.Domain.Entities.WorkspaceType", "WorkspaceType")
                         .WithMany("Workspaces")
+                        .HasForeignKey("WorkspaceTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Coworking");
+
+                    b.Navigation("WorkspaceType");
+                });
+
+            modelBuilder.Entity("DeskBooking.Domain.Entities.WorkspacePhoto", b =>
+                {
+                    b.HasOne("DeskBooking.Domain.Entities.WorkspaceType", "WorkspaceType")
+                        .WithMany("WorkspacePhotos")
                         .HasForeignKey("WorkspaceTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -243,6 +324,13 @@ namespace DeskBooking.Infrastructure.Persistence.Data.Migrations
                     b.Navigation("WorkspaceTypeAmenities");
                 });
 
+            modelBuilder.Entity("DeskBooking.Domain.Entities.Coworking", b =>
+                {
+                    b.Navigation("CoworkingPhotos");
+
+                    b.Navigation("Workspaces");
+                });
+
             modelBuilder.Entity("DeskBooking.Domain.Entities.Workspace", b =>
                 {
                     b.Navigation("Bookings");
@@ -250,7 +338,7 @@ namespace DeskBooking.Infrastructure.Persistence.Data.Migrations
 
             modelBuilder.Entity("DeskBooking.Domain.Entities.WorkspaceType", b =>
                 {
-                    b.Navigation("Photos");
+                    b.Navigation("WorkspacePhotos");
 
                     b.Navigation("WorkspaceTypeAmenities");
 

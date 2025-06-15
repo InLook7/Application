@@ -6,9 +6,13 @@ namespace DeskBooking.Infrastructure.Persistence.Data;
 
 public class ApplicationDbContext : DbContext
 {
+    public DbSet<Coworking> Coworkings { get; set; }
+
+    public DbSet<CoworkingPhoto> CoworkingPhotos { get; set; }
+
     public DbSet<WorkspaceType> WorkspaceTypes { get; set; }
 
-    public DbSet<Photo> Photos { get; set; }
+    public DbSet<WorkspacePhoto> WorkspacePhotos { get; set; }
 
     public DbSet<Amenity> Amenities { get; set; }
 
@@ -25,8 +29,10 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.ApplyConfiguration(new CoworkingConfiguration());
+        modelBuilder.ApplyConfiguration(new CoworkingPhotoConfiguration());
         modelBuilder.ApplyConfiguration(new WorkspaceTypeConfiguration());
-        modelBuilder.ApplyConfiguration(new PhotoConfiguration());
+        modelBuilder.ApplyConfiguration(new WorkspacePhotoConfiguration());
         modelBuilder.ApplyConfiguration(new AmenityConfiguration());
         modelBuilder.ApplyConfiguration(new WorkspaceTypeAmenityConfiguration());
         modelBuilder.ApplyConfiguration(new WorkspaceConfiguration());
