@@ -13,6 +13,8 @@ import { WorkspaceTypeApiService } from '../../../../shared/services/workspace-t
 import { SuccessModalComponent } from '../../../../shared/ui/modals/success-modal/success-modal.component';
 import { ErrorModalComponent } from '../../../../shared/ui/modals/error-modal/error-modal.component';
 import { TimeAmPmPipe } from '../../pipes/timeAmPm.pipe';
+import { CoworkingApiService } from '../../../../shared/services/coworking-api.service';
+import { UpdateBookingRequest } from '../../models/update-booking-request';
 
 @Component({
   selector: 'app-booking-edit',
@@ -37,7 +39,8 @@ export class BookingEditComponent {
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private bookingApi: BookingApiService,
-    private workspaceTypeApi: WorkspaceTypeApiService
+    private workspaceTypeApi: WorkspaceTypeApiService,
+    private coworkingApi: CoworkingApiService
   ) {
     this.bookingForm = this.formBuilder.group({
       bookedByName: ['', Validators.required],
@@ -77,7 +80,7 @@ export class BookingEditComponent {
 
         this.workspaces$ = this.bookingForm.get('workspaceTypeId')!.valueChanges.pipe(
           startWith(this.bookingForm.get('workspaceTypeId')!.value),
-          switchMap(id => this.workspaceTypeApi.getWorkspacesByWorkspaceTypeId(id))
+          switchMap(workspaceTypeId => this.coworkingApi.getWorkspaces(booking.coworkingId, workspaceTypeId))
         );
       })
     );
@@ -86,11 +89,7 @@ export class BookingEditComponent {
   onSubmit(id: number) {
     const formValue = this.bookingForm.value;
 
-    const booking: Booking = {
-      id,
-      bookedByName: formValue.bookedByName,
-      bookedByEmail: formValue.bookedByEmail,
-      workspaceTypeId: formValue.workspaceTypeId,
+    const booking: UpdateBookingRequest = {
       workspaceId: formValue.workspaceId,
       startTime: formValue.startTime,
       endTime: formValue.endTime,

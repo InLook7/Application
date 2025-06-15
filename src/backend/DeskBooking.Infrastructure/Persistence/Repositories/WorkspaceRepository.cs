@@ -21,10 +21,10 @@ public class WorkspaceRepository : IWorkspaceRepository
             .FirstOrDefaultAsync(w => w.Id == workspaceId);
     }
 
-    public async Task<IEnumerable<Workspace>> GetByWorkspaceTypeId(int workspaceTypeId)
+    public async Task<IEnumerable<Workspace>> GetByCoworkingAndWorkspaceType(int coworkingId, int workspaceTypeId)
     {
         return await _dbContext.Workspaces
-            .Where(w => w.WorkspaceTypeId == workspaceTypeId)
+            .Where(w => w.CoworkingId == coworkingId && w.WorkspaceTypeId == workspaceTypeId)
             .ToListAsync();
     }
 }

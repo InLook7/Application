@@ -4,6 +4,8 @@ namespace DeskBooking.Domain.Interfaces;
 
 public interface IUnitOfWork : IAsyncDisposable
 {
+    ICoworkingRepository CoworkingRepository { get; }
+
     IWorkspaceTypeRepository WorkspaceTypeRepository { get; }
 
     IWorkspaceRepository WorkspaceRepository { get; }

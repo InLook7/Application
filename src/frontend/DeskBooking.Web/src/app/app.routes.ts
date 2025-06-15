@@ -4,14 +4,21 @@ import { WorkspaceListComponent } from './features/workspace/components/workspac
 import { BookingListComponent } from './features/booking/components/booking-list/booking-list.component';
 import { BookingEditComponent } from './features/booking/components/booking-edit/booking-edit.component';
 import { BookingCreateComponent } from './features/booking/components/booking-create/booking-create.component';
+import { CoworkingListComponent } from './features/coworking/components/coworking-list/coworking-list.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/workspaces', pathMatch: 'full' },
+  { path: '', redirectTo: '/coworkings', pathMatch: 'full' },
   { 
-    path: 'workspaces',
+    path: 'coworkings',
     children: [
-      { path: '', component: WorkspaceListComponent },
-      { path: 'create-booking', component: BookingCreateComponent }
+      { path: '', component: CoworkingListComponent },
+      { 
+        path: ':id/workspaces',
+        children: [
+          { path: '', component: WorkspaceListComponent },
+          { path: 'create-booking', component: BookingCreateComponent }
+        ]
+      }
     ]
   },
   {

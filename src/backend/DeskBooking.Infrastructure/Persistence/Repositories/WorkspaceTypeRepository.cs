@@ -22,7 +22,7 @@ public class WorkspaceTypeRepository : IWorkspaceTypeRepository
     public async Task<IEnumerable<WorkspaceType>> GetAllWithDetailsAsync()
     {
         return await _dbContext.WorkspaceTypes
-            .Include(wt => wt.Photos)
+            .Include(wt => wt.WorkspacePhotos)
             .Include(wt => wt.WorkspaceTypeAmenities)
                 .ThenInclude(wta => wta.Amenity)
             .Include(wt => wt.Workspaces)

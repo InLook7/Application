@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, startWith, switchMap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
 import { CreateBookingRequest } from '../../models/create-booking-request';
@@ -12,6 +12,8 @@ import { WorkspaceTypeApiService } from '../../../../shared/services/workspace-t
 import { SuccessModalComponent } from '../../../../shared/ui/modals/success-modal/success-modal.component';
 import { ErrorModalComponent } from '../../../../shared/ui/modals/error-modal/error-modal.component';
 import { TimeAmPmPipe } from '../../pipes/timeAmPm.pipe';
+import { CoworkingApiService } from '../../../../shared/services/coworking-api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-booking-create',
@@ -29,10 +31,12 @@ export class BookingCreateComponent {
   workspaces$: Observable<Workspace[]>; 
 
   constructor(
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
     private bookingApi: BookingApiService,
-    private workspaceTypeApi: WorkspaceTypeApiService
+    private workspaceTypeApi: WorkspaceTypeApiService,
+    private coworkingApi: CoworkingApiService
   ) {
     this.bookingForm = this.formBuilder.group({
       bookedByName: ['', Validators.required],
@@ -55,8 +59,9 @@ export class BookingCreateComponent {
 
     this.workspaceTypes$ = this.workspaceTypeApi.getWorkspaceTypes();
 
+    const coworkingId = Number(this.route.snapshot.paramMap.get('id'));
     this.workspaces$ = this.bookingForm.get('workspaceTypeId')!.valueChanges.pipe(
-      switchMap(id => this.workspaceTypeApi.getWorkspacesByWorkspaceTypeId(id))
+      switchMap(workspaceTypeid => this.coworkingApi.getWorkspaces(coworkingId, workspaceTypeid))
     );
   }
 

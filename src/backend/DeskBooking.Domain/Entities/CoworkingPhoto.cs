@@ -1,15 +1,15 @@
 namespace DeskBooking.Domain.Entities;
 
-public class Photo
+public class CoworkingPhoto
 {
     public int Id { get; set; }
 
-    public int WorkspaceTypeId { get; set; }
+    public int CoworkingId { get; set; }
 
     public string Title { get; set; }
 
     public string FilePath { get; set; }
 
     // Navigation properties
-    public WorkspaceType WorkspaceType { get; set; }
+    public Coworking Coworking { get; set; }
 }

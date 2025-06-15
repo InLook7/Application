@@ -1,6 +1,6 @@
 namespace DeskBooking.Domain.Entities;
 
-public class WorkspaceType
+public class Coworking
 {
     public int Id { get; set; }
 
@@ -8,10 +8,10 @@ public class WorkspaceType
 
     public string? Description { get; set; }
 
+    public string Address { get; set; }
+
     // Navigation properties
     public virtual ICollection<Workspace> Workspaces { get; set; }
 
-    public virtual ICollection<WorkspacePhoto> WorkspacePhotos { get; set; }
-
-    public virtual ICollection<WorkspaceTypeAmenity> WorkspaceTypeAmenities { get; set; }
+    public virtual ICollection<CoworkingPhoto> CoworkingPhotos { get; set; }
 }

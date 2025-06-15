@@ -4,11 +4,11 @@ using DeskBooking.Domain.Entities;
 
 namespace DeskBooking.Infrastructure.Persistence.Data.Configurations;
 
-public class PhotoConfiguration : IEntityTypeConfiguration<Photo>
+public class WorkspacePhotoConfiguration : IEntityTypeConfiguration<WorkspacePhoto>
 {
-    public void Configure(EntityTypeBuilder<Photo> builder)
+    public void Configure(EntityTypeBuilder<WorkspacePhoto> builder)
     {
-        builder.Property(p => p.Title)
+        builder.Property(wp => wp.Title)
             .HasMaxLength(50);
     }
 }

@@ -21,7 +21,7 @@
         </select>
 
         <ng-container *ngIf="workspaces$ | async as workspaces">
-          <ng-container *ngIf="workspaces.length > 4; else radioList">
+          <ng-container *ngIf="workspaces[0].workspaceTypeId === 1; else radioList">
             <label>What kind of open space do you need?</label>
 
             <select formControlName="workspaceId">
